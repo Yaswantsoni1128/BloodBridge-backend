@@ -33,8 +33,8 @@ const userSchema= new mongoose.Schema(
         },
         role:{
             type:String,
-            enum:["donor","hospital"],
-            default:"donor",
+            enum:["BloodBank","hospital"],
+            default:"hospital",
         },
         resetPasswordToken: {
             type: String,
