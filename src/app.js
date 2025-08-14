@@ -23,7 +23,9 @@ app.use(cookieParser());
 
 import userRouter from "./routes/user.routes.js"
 import donorRouter from "./routes/donor.routes.js"
+import inventoryRouter from "./routes/inventory.routes.js"
 app.use('/api/user',userRouter);
 app.use('/api/donor',donorRouter);
+app.use('/api/inventory',inventoryRouter);
 
 export {app}
