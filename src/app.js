@@ -23,7 +23,9 @@ app.use(cookieParser());
 
 import userRouter from "./routes/user.routes.js"
 import donorRouter from "./routes/donor.routes.js"
+import smsRoutes from "./routes/sms.routes.js"
 app.use('/api/user',userRouter);
 app.use('/api/donor',donorRouter);
+app.use('/api', smsRoutes);
 
 export {app}
