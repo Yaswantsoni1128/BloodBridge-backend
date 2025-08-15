@@ -9,6 +9,8 @@ alertRouter.post('/', validateJWT,  alertController.createAlert);
 alertRouter.put('/:id', validateJWT,  alertController.updateAlert);
 alertRouter.delete('/:id', validateJWT,  alertController.deleteAlert);
 alertRouter.get('/hospital', validateJWT, alertController.getAllAlertsOfHospital)
+alertRouter.put('/resolve/:id', validateJWT, alertController.resolveAlert)
+
 
 //public routes
 alertRouter.get('/:id',  alertController.getAlertById);
