@@ -191,7 +191,35 @@ const alertController = {
                 message: "Failed to delete alert. Please try again!",
             });
         }
+    },
+    resolveAlert: async (req, res) => {
+        const id = req.params.id;
+        console.log("ALERT ID: ", id);
+
+        try {
+            const alert = await Alert.findById(id);
+            console.log("Alert from resolve controller: ", alert);
+            if (!alert) {
+                return res.status(404).json({ message: "Alert not found." });
+            }
+            if (alert.isResolved) {
+                return res.status(400).json({ message: "Alert already resolved." });
+            }
+
+            // Update alert fields
+            alert.isResolved = true;
+            alert.resolvedAt = new Date();
+            await alert.save();
+            res.status(200).json({
+                message: "Alert resolved successfully",
+                alert,
+            });
+        } catch (error) {
+            console.error("Error resolving alert:", error);
+            res.status(500).json({ message: "Internal server error" });
+        }
     }
+
 }
 
 export default alertController;
