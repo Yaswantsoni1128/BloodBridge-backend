@@ -47,7 +47,7 @@ const userController={
                 $or: [{ email }, { phone }],
             });
             if(existingUser){
-                return res.status(400).json({message:"Email already in use"});
+                return res.status(400).json({message:"Email or phone number already in use"});
             }
             const newUser= await User.create({
                 name,
