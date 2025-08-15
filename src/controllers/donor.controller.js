@@ -87,6 +87,27 @@ const donorController = {
       res.status(500).json({ message: error.message });
     }
   },
+
+  // GET Recent 6 Donors for the logged-in hospital
+  getRecentDonors: async (req, res) => {
+    try {
+      const hospitalId = req.user._id;
+
+      const donors = await Donor.find({ hospitalId })
+        .sort({ createdAt: -1 })
+        .limit(6)
+        .populate("hospitalId", "name")
+        .populate("requestId", "bloodType");
+
+      res.status(200).json({
+        success: true,
+        count: donors.length,
+        donors,
+      });
+    } catch (error) {
+      res.status(500).json({ message: error.message });
+    }
+  }
 };
 
 export default donorController;

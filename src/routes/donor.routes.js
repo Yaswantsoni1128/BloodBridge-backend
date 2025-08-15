@@ -9,5 +9,5 @@ router.put("/updateDonor/:id", validateJWT, donorController.updateDonor);
 router.delete("/deleteDonor/:id", validateJWT, donorController.deleteDonor);
 router.get("/getDonor/:id", validateJWT, donorController.getDonorById);
 router.get("/getAllDonors/", validateJWT, donorController.getAllDonors);
-
+router.get("/recent",validateJWT, donorController.getRecentDonors);
 export default router;
