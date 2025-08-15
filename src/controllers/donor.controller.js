@@ -36,7 +36,7 @@ const donorController = {
       const updatedDonor = await Donor.findByIdAndUpdate(
         req.params.id,
         req.body,
-        { new: true, runValidators: true }
+        { new: true}
       );
       if (!updatedDonor) {
         return res.status(404).json({ message: "Donor not found" });

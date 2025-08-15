@@ -69,6 +69,7 @@ const userController={
             res.status(201).json({
                 message: "User created successfully",
                 accessToken,
+                refreshToken,
                 user:{
                     _id: newUser._id,
                     name: newUser.name,
